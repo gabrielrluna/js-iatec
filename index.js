@@ -10,25 +10,27 @@ function btnCadastrar() {
     var firstname = $("#firstname").val();
     var lastname = $("#lastname").val();
 
-    console.log(firstname);
-    console.log(lastname);
     var validacao = validFormulario(firstname, lastname);
         if (!validacao){
             alert("Preencha todos os dados");
             return;
         }
-        let pessoaObjeto = {firstname, lastname}
-        listaNomes.push(pessoaObjeto)
 
-        console.log(listaNomes);
+        let pessoaObjeto = {firstname, lastname}
+        listaNomes.push(pessoaObjeto);
+        AdicionarNomesElementoHtml(pessoaObjeto);
     }
 
 function AdicionarNomesElementoHtml(pessoaObjeto) {
     // Primeiro Exemplo
     var elementoHtml = document.getElementById("lista-nomes");
-    var novaDiv = document.createElement("div");
-    novaDiv.innerHTML = `$(pessoaObjeto.firstname) $(pessoaObjeto.lastname)`
+    // var novaDiv = document.createElement("div");
+    // novaDiv.innerHTML = `${pessoaObjeto.firstname} ${pessoaObjeto.lastname}`
+    // elementoHtml.appendChild(novaDiv);
     
+    //Segundo exemplo
+    var novoCodigoHtml =` <li class="mt-3 list-group-item">${pessoaObjeto.firstname} ${pessoaObjeto.lastname}</li>`;
+    elementoHtml.insertAdjacentHTML("beforeend",novoCodigoHtml);
 }
 
 function eventEscrever(event){
