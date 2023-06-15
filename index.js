@@ -29,8 +29,21 @@ function AdicionarNomesElementoHtml(pessoaObjeto) {
     // elementoHtml.appendChild(novaDiv);
     
     //Segundo exemplo
-    var novoCodigoHtml =` <li class="mt-3 list-group-item">${pessoaObjeto.firstname} ${pessoaObjeto.lastname}</li>`;
+    var novoCodigoHtml =`
+    <li class="mt-3 list-group-item">
+    <button onclick='ExcluirElemento(this)' class="btn btn-danger">
+    <i class="fa-solid fa-xmark"></i>
+    </button>
+    ${pessoaObjeto.firstname} ${pessoaObjeto.lastname}</li>`;
     elementoHtml.insertAdjacentHTML("beforeend",novoCodigoHtml);
+}
+
+//Usando "element.remove()" para excluir um elemento
+//Obs: para excluir um elemento "acima" do selecionado, basta incluir "parentNode"
+
+function ExcluirElemento(element) {
+    element.parentNode.remove();
+    
 }
 
 function eventEscrever(event){
